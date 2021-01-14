@@ -48,7 +48,7 @@ describe('Tic Tac Toe Test', () => {
     })
 
 
-    it("3 Horizontal Xs win the game", () => {
+    it("3 Horizontal Xs wins the game", () => {
         let handler: TicTacToe = new TicTacToe();
         expect(handler.play("X", 0, 0)).toBe(true);
         expect(handler.getPlayerAtPosition(0,0)).toBe("X");
@@ -63,6 +63,51 @@ describe('Tic Tac Toe Test', () => {
         expect(handler.getPlayerAtPosition(1,1)).toBe("O");
 
         expect(handler.play("X", 2, 0)).toBe("X has won");
+
+    })
+    it("3 Vertical Xs wins the game", () => {
+        let handler: TicTacToe = new TicTacToe();
+        expect(handler.play("X", 0, 0)).toBe(true);
+        expect(handler.getPlayerAtPosition(0,0)).toBe("X");
+
+        expect(handler.play("O", 2, 1)).toBe(true);
+        expect(handler.getPlayerAtPosition(2,1)).toBe("O");
+
+        expect(handler.play("X", 0, 1)).toBe(true);
+        expect(handler.getPlayerAtPosition(0,1)).toBe("X");
+
+        expect(handler.play("O", 1, 1)).toBe(true);
+        expect(handler.getPlayerAtPosition(1,1)).toBe("O");
+
+        expect(handler.play("X", 0, 2)).toBe("X has won");
+
+    })
+    it("3 Diagonal Os wins the game", () => {
+        let handler: TicTacToe = new TicTacToe();
+        expect(handler.play("X", 0, 0)).toBe(true);
+
+        expect(handler.play("O", 2, 0)).toBe(true);
+
+        expect(handler.play("X", 0, 1)).toBe(true);
+
+        expect(handler.play("O", 1, 1)).toBe(true);
+
+        expect(handler.play("X", 1, 2)).toBe(true);
+
+        expect(handler.play("O", 0, 2)).toBe("O has won");
+
+    })
+    it("9 positions filled and no 3 in a row results in a draw", () => {
+        let handler: TicTacToe = new TicTacToe();
+        expect(handler.play("X", 1, 0)).toBe(true);
+        expect(handler.play("O", 0, 0)).toBe(true);
+        expect(handler.play("X", 1, 1)).toBe(true);
+        expect(handler.play("O", 2, 0)).toBe(true);
+        expect(handler.play("X", 2, 1)).toBe(true);
+        expect(handler.play("O", 0, 1)).toBe(true);
+        expect(handler.play("X", 0, 2)).toBe(true);
+        expect(handler.play("O", 1, 2)).toBe(true);
+        expect(handler.play("X", 2, 2)).toBe("It's a draw");
 
     })
 })

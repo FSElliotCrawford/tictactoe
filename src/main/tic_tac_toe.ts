@@ -15,7 +15,7 @@ export class TicTacToe implements TicTacToeInterface {
 
     last_player : LastPlayer = null
     played_positions: PlayedPosition[] = []
-
+    turnsCount: number = 0
     play(player : LastPlayer, pos_x: number, pos_y: number) {
 
         if(!this.last_player && player === "O") {
@@ -37,16 +37,18 @@ export class TicTacToe implements TicTacToeInterface {
             x: pos_x,
             y: pos_y
         });
-
+        this.turnsCount++;
 
         const winner = this.findWinner();
 
         if(winner) {
             return winner + " has won";
         }
+        else if(this.turnsCount === 9){
+            return "It's a draw";
+        }
 
         this.last_player = player;
-
 
 
         return true;
