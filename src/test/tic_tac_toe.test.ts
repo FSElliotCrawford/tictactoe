@@ -26,9 +26,25 @@ describe('Tic Tac Toe Test', () => {
         expect(handler.play("X", 1, 0)).toBe(true);
         expect(handler.play("O", 2, 0)).toBe(true);
     })
+
     it("X plays at position 1,0", () => {
         let handler: TicTacToe = new TicTacToe();
-        // expect(handler.play("X", 1, 0)).toBe(true);
+        expect(handler.play("X", 1, 0)).toBe(true);
         expect(handler.getPlayerAtPosition(1,0)).toBe("X");
+    })
+
+    it("O cannot play on a played position", () => {
+        let handler: TicTacToe = new TicTacToe();
+        expect(handler.play("X", 1, 0)).toBe(true);
+        expect(handler.play("O", 1, 0)).toBe(false);
+    })
+
+
+    it("Players alternate placing X and O on the board", () => {
+        let handler: TicTacToe = new TicTacToe();
+        expect(handler.play("X", 1, 0)).toBe(true);
+        expect(handler.getPlayerAtPosition(1,0)).toBe("X");
+        expect(handler.play("O", 2, 0)).toBe(true);
+        expect(handler.getPlayerAtPosition(2,0)).toBe("O");
     })
 })
