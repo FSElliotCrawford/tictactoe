@@ -18,6 +18,10 @@ export class TicTacToe implements TicTacToeInterface {
     turnsCount: number = 0
     play(player : LastPlayer, pos_x: number, pos_y: number) {
 
+        if(this.turnsCount === 0) {
+            this.drawBoard();
+        }
+
         if(!this.last_player && player === "O") {
             return false;
         }
@@ -37,21 +41,47 @@ export class TicTacToe implements TicTacToeInterface {
             x: pos_x,
             y: pos_y
         });
+
         this.turnsCount++;
 
         const winner = this.findWinner();
 
         if(winner) {
+            this.drawBoard();
             return winner + " has won";
         }
         else if(this.turnsCount === 9){
+            this.drawBoard();
             return "It's a draw";
         }
 
         this.last_player = player;
 
-
         return true;
+    }
+
+    drawBoard() {
+
+
+        const top_row = [
+            (this.getPlayerAtPosition(0,0) ? this.getPlayerAtPosition(0,0) : "-"),
+            (this.getPlayerAtPosition(0,1) ? this.getPlayerAtPosition(0,1) : "-"),
+            (this.getPlayerAtPosition(0,2) ? this.getPlayerAtPosition(0,2) : "-"),
+        ].join(" | ");
+
+        const middle_row = [
+            (this.getPlayerAtPosition(1,0) ? this.getPlayerAtPosition(1,0) : "-"),
+            (this.getPlayerAtPosition(1,1) ? this.getPlayerAtPosition(1,1) : "-"),
+            (this.getPlayerAtPosition(1,2) ? this.getPlayerAtPosition(1,2) : "-"),
+        ].join(" | ");
+
+        const bottom_row = [
+            (this.getPlayerAtPosition(2,0) ? this.getPlayerAtPosition(2,0) : "-"),
+            (this.getPlayerAtPosition(2,1) ? this.getPlayerAtPosition(2,1) : "-"),
+            (this.getPlayerAtPosition(2,2) ? this.getPlayerAtPosition(2,2) : "-"),
+        ].join(" | ");
+
+        console.log('\n', top_row, '\n', middle_row, '\n', bottom_row);
     }
 
 

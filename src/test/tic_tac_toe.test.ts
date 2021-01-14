@@ -82,6 +82,7 @@ describe('Tic Tac Toe Test', () => {
         expect(handler.play("X", 0, 2)).toBe("X has won");
 
     })
+
     it("3 Diagonal Os wins the game", () => {
         let handler: TicTacToe = new TicTacToe();
         expect(handler.play("X", 0, 0)).toBe(true);
@@ -95,8 +96,8 @@ describe('Tic Tac Toe Test', () => {
         expect(handler.play("X", 1, 2)).toBe(true);
 
         expect(handler.play("O", 0, 2)).toBe("O has won");
-
     })
+
     it("9 positions filled and no 3 in a row results in a draw", () => {
         let handler: TicTacToe = new TicTacToe();
         expect(handler.play("X", 1, 0)).toBe(true);
@@ -108,6 +109,5 @@ describe('Tic Tac Toe Test', () => {
         expect(handler.play("X", 0, 2)).toBe(true);
         expect(handler.play("O", 1, 2)).toBe(true);
         expect(handler.play("X", 2, 2)).toBe("It's a draw");
-
     })
 })
