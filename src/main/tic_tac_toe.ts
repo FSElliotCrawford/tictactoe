@@ -1,6 +1,7 @@
 type LastPlayer = "X" | "O" | null;
 
 interface PlayedPosition {
+    player: LastPlayer
     x: number
     y: number
 }
@@ -25,13 +26,14 @@ export class TicTacToe implements TicTacToeInterface {
             return false;
         }
 
-        const already_exists = this.played_positions.find((position) => position.x == pos_x && position.y == pos_y);
+        const already_exists = this.getPlayerAtPosition(pos_x,pos_y);
 
         if(already_exists) {
             return false;
         }
 
         this.played_positions.push({
+            player: player,
             x: pos_x,
             y: pos_y
         });
@@ -43,7 +45,12 @@ export class TicTacToe implements TicTacToeInterface {
     }
 
     getPlayerAtPosition(pos_x: number, pos_y: number) {
-        return "X";
+        const playerAtPosition = this.played_positions.find((position) => position.x == pos_x && position.y == pos_y);
+        if (playerAtPosition) {
+            return playerAtPosition.player;
+        }
+
+
     }
 }
 
