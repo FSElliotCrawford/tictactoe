@@ -10,4 +10,8 @@ describe('Tic Tac Toe Test', () => {
         let handler: TicTacToe = new TicTacToe();
         expect(handler.play("X", 1, 0)).toBe(true);
     })
+    it("O cannot be first", () => {
+        let handler: TicTacToe = new TicTacToe();
+        expect(handler.play("O", 1, 0)).toBe(false);
+    })
 })
