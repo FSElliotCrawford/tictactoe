@@ -26,4 +26,9 @@ describe('Tic Tac Toe Test', () => {
         expect(handler.play("X", 1, 0)).toBe(true);
         expect(handler.play("O", 2, 0)).toBe(true);
     })
+    it("X plays at position 1,0", () => {
+        let handler: TicTacToe = new TicTacToe();
+        // expect(handler.play("X", 1, 0)).toBe(true);
+        expect(handler.getPlayerAtPosition(1,0)).toBe("X");
+    })
 })

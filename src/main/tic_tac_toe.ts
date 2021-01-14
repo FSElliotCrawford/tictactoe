@@ -21,4 +21,10 @@ export class TicTacToe implements TicTacToeInterface {
         this.last_player = player;
         return true;
     }
+
+    getPlayerAtPosition(pos_x: number, pos_y: number){
+        return "X";
+    }
 }
+
+
